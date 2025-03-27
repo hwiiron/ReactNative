@@ -5,7 +5,8 @@ function GoalItem({ text, id, deleteGoalHandler }) {
     <View style={styles.goalItem}>
       <Pressable
         android_ripple={{ color: "#210644" }}
-        onPress={deleteGoalHandler.bind(this, id)}
+        // onPress={deleteGoalHandler.bind(this, id)}
+        onPress={() => deleteGoalHandler(id)}
         style={({ pressed }) => pressed && styles.pressedItem}
       >
         <Text style={styles.goalText}>{text}</Text>
