@@ -8,7 +8,7 @@ function GoalInput({ modalIsVisible, addGoalHandler }) {
     setEnteredGoalText(enteredText);
   }
 
-  function addGoalHandler2() {
+  function handleAddGoal() {
     addGoalHandler(enteredGoalText);
     setEnteredGoalText("");
   }
@@ -23,7 +23,7 @@ function GoalInput({ modalIsVisible, addGoalHandler }) {
           onChangeText={goalInputHandler}
         />
 
-        <Button title="Add Goal" onPress={addGoalHandler2} />
+        <Button title="Add Goal" onPress={handleAddGoal} />
       </View>
     </Modal>
   );
