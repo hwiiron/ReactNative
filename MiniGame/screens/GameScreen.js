@@ -1,4 +1,4 @@
-import { Alert, FlatList, StyleSheet, Text, View } from "react-native";
+import { Alert, FlatList, StyleSheet, View } from "react-native";
 import Title from "../components/ui/Title";
 import { useEffect, useState } from "react";
 import NumberContainer from "../components/game/NumberContainer";
@@ -28,14 +28,14 @@ function GameScreen({ userNumber, gameOverHandler }) {
 
   useEffect(() => {
     if (currentGuess === userNumber) {
-      gameOverHandler();
+      gameOverHandler(guessRounds.length);
     }
   }, [currentGuess, userNumber, gameOverHandler]);
 
   useEffect(() => {
     minBoundary = 1;
     maxBoundary = 100;
-  });
+  }, []);
 
   function nextGuessHandler(direction) {
     // direction => 'lower', 'greater'
@@ -90,7 +90,7 @@ function GameScreen({ userNumber, gameOverHandler }) {
           </View>
         </View>
       </Card>
-      <View>
+      <View style={styles.listContainer}>
         {/* {guessRounds.map((guessRound) => {
           return <Text key={guessRound}>{guessRound}</Text>;
         })} */}
@@ -125,5 +125,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
+  },
+  listContainer: {
+    flex: 1,
+    padding: 16,
   },
 });
