@@ -23,6 +23,7 @@ let maxBoundary = 100;
 function GameScreen({ userNumber, gameOverHandler }) {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
+  const [guessRounds, setGuessRounds] = useState([initialGuess]);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -60,6 +61,7 @@ function GameScreen({ userNumber, gameOverHandler }) {
       currentGuess
     );
     setCurrentGuess(newRndNumber);
+    setGuessRounds((prevGuessRounds) => [newRndNumber, ...prevGuessRounds]);
   }
 
   return (
@@ -85,7 +87,11 @@ function GameScreen({ userNumber, gameOverHandler }) {
           </View>
         </View>
       </Card>
-      <Text>LOG ROUNDS</Text>
+      <View>
+        {guessRounds.map((guessRound) => {
+          return <Text key={guessRound}>{guessRound}</Text>;
+        })}
+      </View>
     </View>
   );
 }
