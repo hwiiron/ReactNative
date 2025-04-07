@@ -99,6 +99,7 @@ function GameScreen({ userNumber, gameOverHandler }) {
           data={guessRounds}
           renderItem={(itemData) => (
             <GameLogItem
+              key={itemData.item}
               roundNumber={guessRoundsListLength - itemData.index}
               guess={itemData.item}
             />
@@ -116,6 +117,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 24,
+    alignItems: "center",
   },
   instructionText: {
     marginBottom: 12,
